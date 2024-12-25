@@ -1,8 +1,6 @@
-package com.example.bank_system.Model;
+package com.example.bank_system_full.Model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 
@@ -16,11 +14,10 @@ public class Employee {
     @Id
     private Integer id;
 
-// @NotNull
+    //  @Column(columnDefinition ="varchar not null ")
     private String position;
 
-// @NotNull
-// @DecimalMin("0.0")
+    //@Column(columnDefinition = "DECIMAL(10, 2)")
     private Double salary;
 
     @OneToOne
