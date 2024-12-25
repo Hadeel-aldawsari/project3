@@ -1,8 +1,6 @@
-package com.example.bank_system.Model;
+package com.example.bank_system_full.Model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 import java.util.Set;
@@ -18,8 +16,7 @@ public class Customer {
    @Id
     private Integer id;
 
-    @NotNull
-    @Pattern(regexp = "^05\\d{8}$")
+ //  @Column(columnDefinition ="varchar(10) not null unique")
     private String phoneNumber;
 
     @OneToOne
