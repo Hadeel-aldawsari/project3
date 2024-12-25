@@ -1,6 +1,6 @@
-package com.example.bank_system.Config;
+package com.example.bank_system_full.Config;
 
-import com.example.bank_system.Service.MyUserDetailsService;
+import com.example.bank_system_full.Service.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -38,8 +38,14 @@ public class ConfigSecurity {
         .authorizeHttpRequests()
         .requestMatchers("/api/v1/bank/customer/register").permitAll()
         .requestMatchers("/api/v1/bank/employee/register").permitAll()
+            .requestMatchers("/api/v1/bank/customer/admin/get-all-customer").hasAuthority("ADMIN")
+            .requestMatchers("/api/v1/bank/employee/admin/get-all-employee").hasAuthority("ADMIN")
+            .requestMatchers("/api/v1/bank/customer/update").hasAuthority("CUSTOMER")
+            .requestMatchers("/api/v1/bank/customer/delete").hasAuthority("CUSTOMER")
+            .requestMatchers("/api/v1/bank/employee/update").hasAuthority("EMPLOYEE")
+            .requestMatchers("/api/v1/bank/employee/delete").hasAuthority("EMPLOYEE")
         .requestMatchers("/api/v1/bank/account/customer/**").hasAuthority("CUSTOMER")
-         .requestMatchers("/api/v1/bank/account/admin/view-account-details").hasAuthority("ADMIN")
+         .requestMatchers("/api/v1/bank/account/admin/view-account-details").hasAnyAuthority("ADMIN","EMPLOYEE")
          .requestMatchers("/api/v1/bank/account/admin/list-accounts").hasAuthority("ADMIN")
          .requestMatchers("/api/v1/bank/account/active-account/**").hasAnyAuthority("ADMIN","EMPLOYEE")
          .requestMatchers("/api/v1/bank/account/block-account/").hasAnyAuthority("ADMIN","EMPLOYEE")
