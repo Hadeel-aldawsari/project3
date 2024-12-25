@@ -1,6 +1,5 @@
-package com.example.bank_system.Model;
+package com.example.bank_system_full.Model;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
@@ -14,13 +13,11 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //@NotEmpty(message = "account number should not be null unique")
-   //@Pattern(regexp = "\\d{4}-\\d{4}-\\d{4}-\\d{4}", message = "Account number must be in the format XXXX-XXXX-XXXX-XXXX")
+
     //  @Column(columnDefinition ="varchar not null unique")
     private String accountNumber;
 
-    //@NotNull
-    // @DecimalMin("0.0")
+
    //  @Column(columnDefinition ="decimal not null")
     private Double balance;
 
